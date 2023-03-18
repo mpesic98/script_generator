@@ -1,0 +1,20 @@
+.mb-3 {
+    width: 500px !important;
+}
+label {
+    margin: 25px;
+}
+#lab {
+    width: 150px;
+}
+.dropdown {
+    margin: 10px;
+}
+#vLine {
+    border: 1px solid black;
+    height: 50px;
+}
+#partners {
+    position: relative;
+    top: 30px;
+}
