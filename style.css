@@ -1,20 +1,127 @@
 .mb-3 {
     width: 500px !important;
 }
-label {
-    margin: 25px;
+
+.button_app {
+    background-color: transparent;
+    border: solid #02a768 2px;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 7px;
+    cursor: pointer;
+    color: black;
 }
-#lab {
-    width: 150px;
+
+.button_app:hover {
+    box-shadow: 0 0 15px #02a768;
 }
+
+.navbar {
+    color: white;
+    font-size: 16px;
+    justify-content: unset !important;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(to right, rgb(9, 88, 84) 0%, rgb(13, 138, 93) 100%);
+}
+
+.logo-img {
+    height: 50px;
+}
+
 .dropdown {
     margin: 10px;
 }
-#vLine {
-    border: 1px solid black;
-    height: 50px;
+
+.button_select {
+    background-color: transparent;
+    border: solid white 1px;
+    border-radius: 5px;
+    margin-left: 30px;
+    padding: 5px;
+    cursor: pointer;
+    color: white;
 }
+
+.brand {
+    width: 150px;
+}
+
+.link,
+.logoImg {
+    width: 300px;
+}
+
+.active {
+    box-shadow: 0 0 10px white;
+}
+
+#lab {
+    width: 150px;
+}
+
+
+#targetElement {
+    width: 200px;
+}
+
+#scriptType {
+    width: 75px;
+    height: 25px;
+}
+
+#splitSettings {
+    width: 60%;
+    border-color: green;
+    position: relative;
+    left: -500px;
+}
+
 #partners {
     position: relative;
     top: 30px;
+}
+
+#scriptType,
+input {
+    text-align: center;
+    width: 50px;
+    height: 35px;
+    border-radius: 5px;
+    border: solid #02a768 2px;
+}
+
+label {
+    margin: 25px;
+}
+
+input[type='checkbox'] {
+    width: 15px;
+    height: 15px;
+}
+
+input[type='checkbox']:checked {
+    background-color: green;
+    border-color: green;
+}
+
+textarea {
+    border-radius: 10px;
+}
+
+select:hover {
+    box-shadow: 0 0 15px #02a768;
+    cursor: pointer;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    cursor: pointer;
+    opacity: 0.7;
+    height: 35px;
+    position: relative;
+    right: -1px;
+}
+
+input[type='checkbox']:hover {
+    cursor: pointer;
+    box-shadow: 0 0 15px #02a768;
 }

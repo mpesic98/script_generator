@@ -7,7 +7,6 @@ var partners = "",
         brand: [],
         img: [],
         link: [],
-        // Storing the inputed values so it can readd them after another step is added
     };
 
 function inputScript() {
@@ -45,7 +44,7 @@ function addPartner() {
     }
 
     pNum = parseInt(document.getElementsByName("pNum")[0].value);
-    document.getElementsByClassName("partners")[0].innerHTML += '<div class="num"><p style="margin: 20px;">Step ' + count + '</p></div>'
+    document.getElementsByClassName("partners")[0].innerHTML += '<div class="num"><p style="margin: 20px;">Step ' + count + ' :</p></div>'
     for (let i = 1 + cNum; i <= pNum + cNum; i++) {
         append = '<label for=""> Brand:</label><input type="textbox" name="brand' + i + '" class="brand"></input><label for="">Link:</label><input type="textbox" name="link' + i + '" class="link"></input><label for=""> Image:</label><input type="textbox" name="img' + i + '" class="logoImg"></input><br>';
         document.getElementsByClassName("num").item(count - 1).innerHTML += append
@@ -77,18 +76,21 @@ function generateScript() {
     var devices = "";
     devices = document.getElementsByName("devicesMobile")[0].checked ? '"mobile",' : "";
     devices += document.getElementsByName("devicesDesktop")[0].checked ? '"desktop"' : "";
+    let targetEl = document.getElementsByName("targetElement")[0].value === "" ? document.getElementsByName("targetElement")[0].placeholder : document.getElementsByName("targetElement")[0].value;
+    let getWidth = document.getElementsByName("width")[0].value === "" ? document.getElementsByName("width")[0].placeholder : document.getElementsByName("width")[0].value;
+    let getHeight = document.getElementsByName("width")[0].value === "" ? document.getElementsByName("height")[0].placeholder : document.getElementsByName("height")[0].value;
     var bcAdsOutput = 'data = {\n' +
         'positioning: [{\n' +
         'value: 0,\n' +
         'pn: function () {\n' +
-        'var parentNode = document.querySelector("' + document.getElementsByName("targetElement")[0].value + '")[0];\n' +
+        'var parentNode = document.querySelector("' + targetEl + '")[0];\n' +
         'return parentNode;\n' +
         '},\n' +
         'cn: function () {\n' +
         'var node = document.createElement("div");\n' +
         'return node;\n' +
         '},\n' +
-        'imageStyle: "height: ' + document.getElementsByName("height")[0].value + '; width: ' + document.getElementsByName("width")[0].value + ';"\n' +
+        'imageStyle: "height: ' + getHeight + '; width: ' + getWidth + ';"\n' +
         '}],\n' +
         'settings: {\n' +
         'cookieLifeTime: ' + document.getElementsByName("frequencyCap")[0].value + ',\n' +
