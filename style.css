@@ -2,26 +2,49 @@
     width: 500px !important;
 }
 
-.button_app {
+.button_select {
     background-color: transparent;
-    border: solid silver 2px;
+    color: silver;
+    border-bottom: solid silver 2px;
+    border-radius: 2px;
+    margin-left: 30px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.active {
+    text-decoration: none;
+    color: white;
+    border-bottom: solid white 2px;
+}
+
+.button_select:hover {
+    text-decoration: none;
+    color: silver;
+    border-bottom: solid silver 2px !important;
+}
+
+.button_app {
+    background-color: #00a767 !important;
+    /* border: solid silver 2px; */
     border-radius: 5px;
     margin: 10px;
-    padding: 7px;
+    padding: 10px;
+    width: 90px;
     cursor: pointer;
-    color: black;
+    color: white;
 }
 
 .button_app:hover {
     box-shadow: 0 0 15px #02a768;
-    border: solid #02a768 2px;
+    /* border: solid #02a768 2px; */
 }
 
 .navbar {
     color: white;
     font-size: 16px;
+    position: fixed;
     justify-content: unset !important;
-    border-radius: 0 0 10px 10px;
     background: linear-gradient(to right, rgb(9, 88, 84) 0%, rgb(13, 138, 93) 100%);
 }
 
@@ -33,22 +56,6 @@
     margin: 10px;
 }
 
-.button_select {
-    background-color: transparent;
-    border-bottom: solid white 2px;
-    border-radius: 2px;
-    margin-left: 30px;
-    padding: 3px;
-    cursor: pointer;
-    color: white;
-}
-
-.button_select:hover {
-    text-decoration: none;
-    color: silver;
-    border-bottom: solid silver 2px !important;
-}
-
 .brand {
     width: 150px;
 }
@@ -58,10 +65,49 @@
     width: 300px;
 }
 
-.active {
+.title {
+    position: relative;
+    color: white;
+    left: -10px;
+    padding: 0 25px;
+    font-size: 20px;
+}
+
+.title:hover {
     text-decoration: none;
-    color: silver;
-    border-bottom: solid silver 2px !important;
+    color: white;
+}
+
+#menuO {
+    font-size: 16px;
+    margin: 10px 20px;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    color: white;
+}
+
+#acdc {
+    text-decoration: none;
+    color: #cbcbcbde;
+}
+
+#acdc:hover {
+    text-decoration: none;
+    color: #cbcbcbde;
+}
+
+#sidebar {
+    position: fixed;
+    color: #cbcbcbde;
+    /* font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; */
+    height: 100%;
+    width: 200px;
+    background-color: #454545;
+    /* border: solid red; */
+}
+
+#bcAds {
+    position: relative;
+    left: 200px;
 }
 
 #lab {
@@ -82,7 +128,7 @@
     width: 60%;
     border-color: green;
     position: relative;
-    left: -500px;
+    left: -320px;
 }
 
 #partners {

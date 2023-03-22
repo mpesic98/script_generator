@@ -19,14 +19,23 @@
 
 <body>
     <nav class="navbar">
-        <img class="logo-img" src="https://i.ibb.co/yPvNQc4/162039763494868603.png">
-        Script generator
+        <a class="title" href="bc_ads.html">Back to ACDC</a>
+            <img class="logo-img" src="https://i.ibb.co/yPvNQc4/162039763494868603.png">
+            Script generator
+            
         <a class="button_select active" href="bc_ads.html">BC Ads</a>
         <a class="button_select" href="new_banner.html">New Banner</a>
         </div>
         </div>
     </nav>
-
+    <div id="sidebar">
+        <div id="menuO"><a id="acdc" href="https://bc-ads.bettercollective.rocks/sites">Sites</a></div>
+        <div id="menuO"><a id="acdc" href="https://bc-ads.bettercollective.rocks/profiles">Profiles</a></div>
+        <div id="menuO"><a id="acdc" href="https://bc-ads.bettercollective.rocks/deployments">Deployments</a></div>
+        <div id="menuO"><a id="acdc" href="https://bc-ads.bettercollective.rocks/deployments/overview">Deployment Overview</a></div>
+        <div id="menuO"><a id="acdc" href="https://bc-ads.bettercollective.rocks/tracking_links">Tracking links</a></div>
+        <div id="menuO"><a id="acdc" href="https://bc-ads.bettercollective.rocks/ad_formats">Ad formats</a></div>
+    </div>
     <div id="bcAds">
         <label for="" id="lab">Partners per step: </label><input type="number" value="1" name="pNum"></input>
         <label for="" id="lab">Frequency cap: </label><input type="number" name="frequencyCap"></input>
@@ -34,31 +43,34 @@
         <label for="" id="lab" title="With px, % or use auto">Width: </label><input title="With px, % or use auto"
             type="textbox" name="width" placeholder="auto"></input>
         <label for="" id="lab" title="With px, % or use auto">Height: </label><input title="With px, % or use auto"
-            type="textbox" name="height" placeholder="auto"></input><label for="" id="lab" title="Place ads above or below the element">Node position: </label>
-            <select name="nodePosition" id="scriptType" title="Place ads above or below the element">
-                <option value="below">below</option>
-                <option value="above">above</option>
-            </select><br>
+            type="textbox" name="height" placeholder="auto"></input><label for="" id="lab"
+            title="Place ads above or below the element">Node position: </label>
+        <select name="nodePosition" id="scriptType" title="Place ads above or below the element">
+            <option value="below">below</option>
+            <option value="above">above</option>
+        </select><br>
         <label for="" id="lab" title="For id use #, class use .">Target element: </label><input
-            title="For id use #, for class use ." type="textbox" placeholder="body" name="targetElement" id="targetElement"></input><br>
-        
+            title="For id use #, for class use ." type="textbox" placeholder="body" name="targetElement"
+            id="targetElement"></input><br>
+
         <label for="" id="lab">Devices: </label>Desktop: &nbsp;&nbsp;&nbsp;<input type="checkbox"
             name="devicesDesktop"></input>&nbsp;&nbsp;&nbsp;&nbsp;Mobile: &nbsp;&nbsp;&nbsp;<input type="checkbox"
             name="devicesMobile"></input><br>
         <label for="" id="lab">Infinite carousel: </label><input type="checkbox" name="infiniteCarousel"></input><br>
         <label for="" id="lab">Stay on last partner: </label><input type="checkbox" name="stayOnLastPartner"></input>
         <hr id="splitSettings">
-        <button onclick="addPartner(0)" class="button_app" id="addP">Add step</button><br>
+        <div onclick="addPartner(0)" class="button_app" id="addP">Add step</div><br>
         <div class="partners">
         </div>
-        <br><button onClick="generateScript()" class="generate button_app" style="display: none;">Generate
-            script!</button><br><br>
+        <br>
+        <div onClick="generateScript()" class="generate button_app" style="display: none;">Generate
+            script!</div><br><br>
         <textarea name="output" style="width: 500px; height: 500px; display: none;"></textarea>
-    </div>
 
-    <button type="submit" onclick="inputScript()" class="button_app">Translate</button><br>
+    <div type="submit" onclick="inputScript()" class="button_app">Translate</div><br>
     <textarea name="input" id="translate" cols="30" rows="10" placeholder="Input script or generate script"
         style="width: 500px; height: 300px; margin: 5px;"></textarea>
+    </div>
 </body>
 
 </html>
