@@ -21,10 +21,8 @@
     <nav class="navbar">
         <img class="logo-img" src="https://i.ibb.co/yPvNQc4/162039763494868603.png">
         Script generator
-        <a href="bc_ads.html">
-            <button class="button_select active">BC Ads</button></a>
-        <a href="new_banner.html">
-            <button class="button_select">New Banner</button></a>
+        <a class="button_select active" href="bc_ads.html">BC Ads</a>
+        <a class="button_select" href="new_banner.html">New Banner</a>
         </div>
         </div>
     </nav>
@@ -44,8 +42,8 @@
         <label for="" id="lab" title="For id use #, class use .">Target element: </label><input
             title="For id use #, for class use ." type="textbox" placeholder="body" name="targetElement" id="targetElement"></input><br>
         
-        <label for="" id="lab">Devices: </label>Desktop: &nbsp;<input type="checkbox"
-            name="devicesDesktop"></input>&nbsp;&nbsp;Mobile: &nbsp;<input type="checkbox"
+        <label for="" id="lab">Devices: </label>Desktop: &nbsp;&nbsp;&nbsp;<input type="checkbox"
+            name="devicesDesktop"></input>&nbsp;&nbsp;&nbsp;&nbsp;Mobile: &nbsp;&nbsp;&nbsp;<input type="checkbox"
             name="devicesMobile"></input><br>
         <label for="" id="lab">Infinite carousel: </label><input type="checkbox" name="infiniteCarousel"></input><br>
         <label for="" id="lab">Stay on last partner: </label><input type="checkbox" name="stayOnLastPartner"></input>
@@ -59,7 +57,7 @@
     </div>
 
     <button type="submit" onclick="inputScript()" class="button_app">Translate</button><br>
-    <textarea name="input" id="translate" cols="30" rows="10"
+    <textarea name="input" id="translate" cols="30" rows="10" placeholder="Input script or generate script"
         style="width: 500px; height: 300px; margin: 5px;"></textarea>
 </body>
 
