@@ -116,7 +116,6 @@ input:focus {
 #translate:hover,
 input:hover {
     text-align: center;
-    width: 50px;
     height: 35px;
     border-radius: 5px;
     box-shadow: 0 0 15px #02a768;
