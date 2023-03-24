@@ -21,7 +21,7 @@ function inputScript() {
         document.getElementsByClassName("logoImg")[i].value = partners.partners[i].logoImg;
     }
     let he = partners.positioning[0].imageStyle.split(";")
-    document.getElementsByName("targetElement")[0].value = "body";
+    document.getElementsByName("targetElement")[0].value = script.substring(script.indexOf('querySelector("')+15,script.indexOf('")'));
     document.getElementsByName("frequencyCap")[0].value = partners.settings.cookieLifeTime;
     document.getElementsByName("refreshDelay")[0].value = partners.settings.refreshDelay;
     document.getElementsByName("width")[0].value = he[0].slice(7);
@@ -31,22 +31,36 @@ function inputScript() {
     document.getElementsByName("devicesDesktop")[0].checked = partners.settings.devices.indexOf("desktop") > -1 ? true : false;
     document.getElementsByName("stayOnLastPartner")[0].checked = partners.settings.stayOnLastPartner ? true : false;
     document.getElementsByName("infiniteCarousel")[0].checked = partners.settings.infiniteCarousel ? true : false;
+}
 
+function removeBtn(partner) {
+    document.getElementsByClassName("num")[partner - 1].remove();
+    document.getElementsByTagName("hr")[partner].remove();
+    count--;
+    cNum--;
+    for (let i = 0; i < document.querySelectorAll(".stepC").length; i++) {
+        let sel = document.querySelectorAll(".num")[i];
+        document.querySelectorAll(".stepC")[i].innerHTML = "Step " + (i + 1) + " :";
+        sel.getElementsByClassName("brand")[0].setAttribute("name", "brand" + (i + 1));
+        sel.getElementsByClassName("link")[0].setAttribute("name", "link" + (i + 1));
+        sel.getElementsByClassName("logoImg")[0].setAttribute("name", "img" + (i + 1));
+    }
 }
 
 function addPartner() {
     for (let i = 0; i < document.querySelectorAll(".num").length; i++) {
         presets.brand[i] = document.getElementsByClassName("brand")[i].value
-        presets.img[i] = document.getElementsByClassName("logoImg")[0].value
+        presets.img[i] = document.getElementsByClassName("logoImg")[i].value
         presets.link[i] = document.getElementsByClassName("link")[i].value
-        console.log(i);
-        console.log(document.getElementsByClassName("logoImg")[i].value);
     }
 
     pNum = parseInt(document.getElementsByName("pNum")[0].value);
-    document.getElementsByClassName("partners")[0].innerHTML += '<div class="num"><p style="margin: 20px;">Step ' + count + ' :</p></div>'
+    document.getElementsByClassName("partners")[0].innerHTML += '<div class="num"><p class="stepC" style="margin: 20px;">Step ' + count + ' :</p></div>'
     for (let i = 1 + cNum; i <= pNum + cNum; i++) {
-        append = '<label for=""> Brand:</label><input type="textbox" name="brand' + i + '" class="brand"></input><label for="">Link:</label><input type="textbox" name="link' + i + '" class="link"></input><label for=""> Image:</label><input type="textbox" name="img' + i + '" class="logoImg"></input><br>';
+        append = '<label for=""> Brand:</label><input type="textbox" name="brand' + i + '" class="brand"></input>' +
+            '<label for="">Link:</label><input type="textbox" name="link' + i + '" class="link"></input><label for=""> Image:</label>' +
+            '<input type="textbox" name="img' + i + '" class="logoImg"></input>' +
+            '<img onclick="removeBtn(' + i + ')" class="removeBtn' + i + '" id="removeBtn" src="https://modals.igaming-service.io/wp-content/uploads/2023/03/remove.png"><br>';
         document.getElementsByClassName("num").item(count - 1).innerHTML += append
     }
     cNum += pNum
@@ -61,15 +75,20 @@ function addPartner() {
 }
 
 function generateScript() {
+    console.log(document.querySelectorAll(".num").length);
+    for (let i = 0; i < document.querySelectorAll(".num").length; i++) {
+        console.log(document.querySelectorAll(".num")[i]);
+    }
+    console.log("Count = " + count);
     for (let i = 1; i < count; i++) {
         var inputCount = document.getElementsByClassName("num").item(i - 1).getElementsByTagName('input').length / 3;
         for (let j = 1; j <= inputCount; j++) {
             j === inputCount ? e = "\n}" : e = "";
             j === 1 ? s = "{" : s = "";
             if (j === 1) {
-                partners += s + '\n\tbrand: "' + document.getElementsByName("brand" + i)[0].value + '", \n\logoImg: "' + document.getElementsByName("img" + i)[0].value + '", \n\tlink: "' + document.getElementsByName("link" + i)[0].value + '"' + e + ' ,\n'
+                partners += s + '\n\tbrand: "' + document.getElementsByName("brand" + i)[0].value + '", \n\tlogoImg: "' + document.getElementsByName("img" + i)[0].value + '", \n\tlink: "' + document.getElementsByName("link" + i)[0].value + '"' + e + ' ,\n'
             } else {
-                partners += s + '\n\tbrand' + j + ': "' + document.getElementsByName("brand" + i)[0].value + '", \n\logoImg' + j + ': "' + document.getElementsByName("img" + i)[0].value + '", \n\tlink' + j + ': "' + document.getElementsByName("link" + i)[0].value + '"' + e + ' ,\n'
+                partners += s + '\n\tbrand' + j + ': "' + document.getElementsByName("brand" + i)[0].value + '", \n\tlogoImg' + j + ': "' + document.getElementsByName("img" + i)[0].value + '", \n\tlink' + j + ': "' + document.getElementsByName("link" + i)[0].value + '"' + e + ' ,\n'
             }
         }
     }
