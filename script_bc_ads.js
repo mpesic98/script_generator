@@ -21,7 +21,7 @@ function inputScript() {
         document.getElementsByClassName("logoImg")[i].value = partners.partners[i].logoImg;
     }
     let he = partners.positioning[0].imageStyle.split(";")
-    document.getElementsByName("targetElement")[0].value = script.substring(script.indexOf('querySelector("')+15,script.indexOf('")'));
+    // document.getElementsByName("targetElement")[0].value = script.substring(script.indexOf('querySelector("') + 15, script.indexOf('")'));
     document.getElementsByName("frequencyCap")[0].value = partners.settings.cookieLifeTime;
     document.getElementsByName("refreshDelay")[0].value = partners.settings.refreshDelay;
     document.getElementsByName("width")[0].value = he[0].slice(7);
@@ -94,19 +94,21 @@ function generateScript() {
     var devices = "";
     devices = document.getElementsByName("devicesMobile")[0].checked ? '"mobile",' : "";
     devices += document.getElementsByName("devicesDesktop")[0].checked ? '"desktop"' : "";
-    let targetEl = document.getElementsByName("targetElement")[0].value === "" ? document.getElementsByName("targetElement")[0].placeholder : document.getElementsByName("targetElement")[0].value;
+    // let targetEl = document.getElementsByName("targetElement")[0].value === "" ? document.getElementsByName("targetElement")[0].placeholder : document.getElementsByName("targetElement")[0].value;
     let getWidth = document.getElementsByName("width")[0].value === "" ? document.getElementsByName("width")[0].placeholder : document.getElementsByName("width")[0].value;
     let getHeight = document.getElementsByName("width")[0].value === "" ? document.getElementsByName("height")[0].placeholder : document.getElementsByName("height")[0].value;
     var bcAdsOutput = 'data = {\n' +
         'positioning: [{\n' +
         'value: 0,\n' +
         'pn: function () {\n' +
-        'var parentNode = document.querySelector("' + targetEl + '")[0];\n' +
-        'return parentNode;\n' +
+        document.getElementsByName("parentNode")[0].value + '\n' +
+        // 'var parentNode = document.querySelector("' + targetEl + '")[0];\n' +
+        // 'return parentNode;\n' +
         '},\n' +
         'cn: function () {\n' +
-        'var node = document.createElement("div");\n' +
-        'return node;\n' +
+        // 'var node = document.createElement("div");\n' +
+        // 'return node;\n' +
+        document.getElementsByName("childNode")[0].value + '\n' +
         '},\n' +
         'imageStyle: "height: ' + getHeight + '; width: ' + getWidth + ';"\n' +
         '}],\n' +

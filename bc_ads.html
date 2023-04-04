@@ -49,15 +49,18 @@
             <option value="below">below</option>
             <option value="above">above</option>
         </select><br>
-        <label for="" id="lab" title="For id use #, class use .">Target element: </label><input
-            title="For id use #, for class use ." type="textbox" placeholder="body" name="targetElement"
-            id="targetElement"></input><br>
-
+        <div for="" id="lab" class="parentNode">Parent node: <textarea
+            title="For id use #, for class use ." name="parentNode"
+            id="parentNode"></textarea></div>
+            <div for="" id="lab" class="childNode">Child node: <textarea
+            title="For id use #, for class use ." name="childNode"
+            id="childNode"></textarea></div><br>
+            <div id="behaviour">
         <label for="" id="lab">Devices: </label>Desktop: &nbsp;&nbsp;&nbsp;<input type="checkbox"
             name="devicesDesktop"></input>&nbsp;&nbsp;&nbsp;&nbsp;Mobile: &nbsp;&nbsp;&nbsp;<input type="checkbox"
             name="devicesMobile"></input><br>
         <label for="" id="lab">Infinite carousel: </label><input type="checkbox" name="infiniteCarousel"></input><br>
-        <label for="" id="lab">Stay on last partner: </label><input type="checkbox" name="stayOnLastPartner"></input>
+        <label for="" id="lab">Stay on last partner: </label><input type="checkbox" name="stayOnLastPartner"></input></div>
         <hr id="splitSettings">
         <div onclick="addPartner(0)" class="button_app" id="addP">Add step</div><br>
         <div class="partners">
