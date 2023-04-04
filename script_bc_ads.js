@@ -75,11 +75,10 @@ function addPartner() {
 }
 
 function generateScript() {
-    console.log(document.querySelectorAll(".num").length);
+    partners = "";
     for (let i = 0; i < document.querySelectorAll(".num").length; i++) {
         console.log(document.querySelectorAll(".num")[i]);
     }
-    console.log("Count = " + count);
     for (let i = 1; i < count; i++) {
         var inputCount = document.getElementsByClassName("num").item(i - 1).getElementsByTagName('input').length / 3;
         for (let j = 1; j <= inputCount; j++) {
