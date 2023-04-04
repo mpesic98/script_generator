@@ -1,6 +1,5 @@
 <html>
 <title>Script generator - BC Ads</title>
-<!-- kskssksksksksks -->
 <head>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -15,25 +14,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
+    <script src="functionality.js"></script>
 </head>
 
 <body>
     <nav class="navbar">
         <a class="title" href="bc_ads.html">Back to ACDC</a>
-            <img class="logo-img" src="https://i.ibb.co/yPvNQc4/162039763494868603.png">
-            Script generator
-            
+        <img class="logo-img" src="https://i.ibb.co/yPvNQc4/162039763494868603.png">
+        Script generator
         <a class="button_select active" href="bc_ads.html">BC Ads</a>
         <a class="button_select" href="new_banner.html">New Banner</a>
         </div>
         </div>
     </nav>
     <div id="sidebar">
+        <div type="submit" onclick="copyFunctionality()" class="button_app side">Functionality</div>
         <div id="menuO"><a id="acdc" href="https://bc-ads.bettercollective.rocks/sites">Sites</a></div>
         <div id="menuO"><a id="acdc" href="https://bc-ads.bettercollective.rocks/profiles">Profiles</a></div>
         <div id="menuO"><a id="acdc" href="https://bc-ads.bettercollective.rocks/deployments">Deployments</a></div>
-        <div id="menuO"><a id="acdc" href="https://bc-ads.bettercollective.rocks/deployments/overview">Deployment Overview</a></div>
-        <div id="menuO"><a id="acdc" href="https://bc-ads.bettercollective.rocks/tracking_links">Tracking links</a></div>
+        <div id="menuO"><a id="acdc" href="https://bc-ads.bettercollective.rocks/deployments/overview">Deployment
+                Overview</a></div>
+        <div id="menuO"><a id="acdc" href="https://bc-ads.bettercollective.rocks/tracking_links">Tracking links</a>
+        </div>
         <div id="menuO"><a id="acdc" href="https://bc-ads.bettercollective.rocks/ad_formats">Ad formats</a></div>
     </div>
     <div id="bcAds">
@@ -50,17 +52,22 @@
             <option value="above">above</option>
         </select><br>
         <div for="" id="lab" class="parentNode">Parent node: <textarea
-            title="For id use #, for class use ." name="parentNode"
-            id="parentNode"></textarea></div>
-            <div for="" id="lab" class="childNode">Child node: <textarea
-            title="For id use #, for class use ." name="childNode"
-            id="childNode"></textarea></div><br>
-            <div id="behaviour">
-        <label for="" id="lab">Devices: </label>Desktop: &nbsp;&nbsp;&nbsp;<input type="checkbox"
-            name="devicesDesktop"></input>&nbsp;&nbsp;&nbsp;&nbsp;Mobile: &nbsp;&nbsp;&nbsp;<input type="checkbox"
-            name="devicesMobile"></input><br>
-        <label for="" id="lab">Infinite carousel: </label><input type="checkbox" name="infiniteCarousel"></input><br>
-        <label for="" id="lab">Stay on last partner: </label><input type="checkbox" name="stayOnLastPartner"></input></div>
+                placeholder="var parentNode = document.getElementsByTagName('body')[0]; return parentNode;"
+                name="parentNode" id="parentNode"></textarea></div>
+        <div for="" id="lab" class="childNode">Child node: <textarea placeholder="var node = document.createElement('div');
+            node.style.position = 'absolute';
+            node.style.top = '0';
+            node.style.left = '0';
+            node.style.zIndex = 9999;
+return node;" name="childNode" id="childNode"></textarea></div><br>
+        <div id="behaviour">
+            <label for="" id="lab">Devices: </label>Desktop: &nbsp;&nbsp;&nbsp;<input type="checkbox"
+                name="devicesDesktop"></input>&nbsp;&nbsp;&nbsp;&nbsp;Mobile: &nbsp;&nbsp;&nbsp;<input type="checkbox"
+                name="devicesMobile"></input><br>
+            <label for="" id="lab">Infinite carousel: </label><input type="checkbox"
+                name="infiniteCarousel"></input><br>
+            <label for="" id="lab">Stay on last partner: </label><input type="checkbox"
+                name="stayOnLastPartner"></input></div>
         <hr id="splitSettings">
         <div onclick="addPartner(0)" class="button_app" id="addP">Add step</div><br>
         <div class="partners">
@@ -69,10 +76,9 @@
         <div onClick="generateScript()" class="generate button_app" style="display: none;">Generate
             script!</div><br><br>
         <textarea name="output" style="width: 500px; height: 500px; display: none;"></textarea>
-
-    <div type="submit" onclick="inputScript()" class="button_app">Translate</div><br>
-    <textarea name="input" id="translate" cols="30" rows="10" placeholder="Input script or generate script"
-        style="width: 500px; height: 300px; margin: 5px;"></textarea>
+        <div type="submit" onclick="inputScript()" class="button_app">Translate</div><br>
+        <textarea name="input" id="translate" cols="30" rows="10" placeholder="Input script or generate script"
+            style="width: 500px; height: 300px; margin: 5px;"></textarea>
     </div>
 </body>
 

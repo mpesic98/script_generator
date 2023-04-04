@@ -9,6 +9,11 @@ var partners = "",
         link: [],
     };
 
+function copyFunctionality() {
+    navigator.clipboard.writeText(BCAdsFunctionality);
+    document.getElementsByClassName('side')[0].innerHTML = "Functionality copied!";
+}
+
 function inputScript() {
     var script = document.getElementById("translate").value
     var partners = eval(script)
@@ -76,9 +81,6 @@ function addPartner() {
 
 function generateScript() {
     partners = "";
-    for (let i = 0; i < document.querySelectorAll(".num").length; i++) {
-        console.log(document.querySelectorAll(".num")[i]);
-    }
     for (let i = 1; i < count; i++) {
         var inputCount = document.getElementsByClassName("num").item(i - 1).getElementsByTagName('input').length / 3;
         for (let j = 1; j <= inputCount; j++) {
@@ -94,21 +96,18 @@ function generateScript() {
     var devices = "";
     devices = document.getElementsByName("devicesMobile")[0].checked ? '"mobile",' : "";
     devices += document.getElementsByName("devicesDesktop")[0].checked ? '"desktop"' : "";
-    // let targetEl = document.getElementsByName("targetElement")[0].value === "" ? document.getElementsByName("targetElement")[0].placeholder : document.getElementsByName("targetElement")[0].value;
     let getWidth = document.getElementsByName("width")[0].value === "" ? document.getElementsByName("width")[0].placeholder : document.getElementsByName("width")[0].value;
     let getHeight = document.getElementsByName("width")[0].value === "" ? document.getElementsByName("height")[0].placeholder : document.getElementsByName("height")[0].value;
+    let childNode = document.getElementsByName("parentNode")[0].value === "" ? document.getElementsByName("parentNode")[0].placeholder : document.getElementsByName("parentNode")[0].value;
+    let parentNode = document.getElementsByName("parentNode")[0].value === "" ? document.getElementsByName("parentNode")[0].placeholder : document.getElementsByName("parentNode")[0].value;
     var bcAdsOutput = 'data = {\n' +
         'positioning: [{\n' +
         'value: 0,\n' +
         'pn: function () {\n' +
-        document.getElementsByName("parentNode")[0].value + '\n' +
-        // 'var parentNode = document.querySelector("' + targetEl + '")[0];\n' +
-        // 'return parentNode;\n' +
+        parentNode + '\n' +
         '},\n' +
         'cn: function () {\n' +
-        // 'var node = document.createElement("div");\n' +
-        // 'return node;\n' +
-        document.getElementsByName("childNode")[0].value + '\n' +
+        childNode + '\n' +
         '},\n' +
         'imageStyle: "height: ' + getHeight + '; width: ' + getWidth + ';"\n' +
         '}],\n' +
@@ -122,7 +121,7 @@ function generateScript() {
         '},\n' +
         'partners: [' + partners + ']}\n';
     document.getElementById("translate").value = bcAdsOutput;
-    var copyText = document.getElementById("translate");
+    let copyText = document.getElementById("translate");
     copyText.select();
     navigator.clipboard.writeText(copyText.value);
     document.getElementsByClassName('generate')[0].innerHTML = "Script copied!"
