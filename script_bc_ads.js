@@ -9,6 +9,14 @@ var partners = "",
         link: [],
     };
 
+function addSize() {
+    var test = document.createElement("div");
+    test.innerHTML = divPos;
+    document.getElementById("positioning").appendChild(test);
+    document.getElementsByClassName("addSize")[0].remove()
+    document.getElementById("tital").innerHTML = "Mobile positioning:"
+}
+
 function copyFunctionality() {
     navigator.clipboard.writeText(BCAdsFunctionality);
     document.getElementsByClassName('side')[0].innerHTML = "Functionality copied!";
@@ -98,27 +106,34 @@ function generateScript() {
     var devices = "";
     devices = document.getElementsByName("devicesMobile")[0].checked ? '"mobile",' : "";
     devices += document.getElementsByName("devicesDesktop")[0].checked ? '"desktop"' : "";
-    let getWidth = document.getElementsByName("width")[0].value === "" ? document.getElementsByName("width")[0].placeholder : document.getElementsByName("width")[0].value;
-    let getHeight = document.getElementsByName("width")[0].value === "" ? document.getElementsByName("height")[0].placeholder : document.getElementsByName("height")[0].value;
-    let childNode = document.getElementsByName("parentNode")[0].value === "" ? document.getElementsByName("parentNode")[0].placeholder : document.getElementsByName("parentNode")[0].value;
-    let parentNode = document.getElementsByName("parentNode")[0].value === "" ? document.getElementsByName("parentNode")[0].placeholder : document.getElementsByName("parentNode")[0].value;
+    let rDel = document.getElementsByName("refreshDelay")[0].value === "" ? document.getElementsByName("refreshDelay")[0].placeholder : document.getElementsByName("refreshDelay")[0].value;
+    let fCap = document.getElementsByName("frequencyCap")[0].value === "" ? document.getElementsByName("frequencyCap")[0].placeholder : document.getElementsByName("frequencyCap")[0].value;
+    let fullPos="";
+    for (let i = 0; i < document.querySelectorAll('#childNode').length; i++) {
+        let getWidth = document.getElementsByName("width")[i].value === "" ? document.getElementsByName("width")[i].placeholder : document.getElementsByName("width")[i].value;
+        let getHeight = document.getElementsByName("width")[i].value === "" ? document.getElementsByName("height")[i].placeholder : document.getElementsByName("height")[i].value;
+        let childNode = document.getElementsByName("childNode")[i].value === "" ? document.getElementsByName("childNode")[i].placeholder : document.getElementsByName("childNode")[i].value;
+        let parentNode = document.getElementsByName("parentNode")[i].value === "" ? document.getElementsByName("parentNode")[i].placeholder : document.getElementsByName("parentNode")[i].value;    
+        fullPos += '{\n' +
+            'value: 0,\n' +
+            'pn: function () {\n' +
+            parentNode + '\n' +
+            '},\n' +
+            'cn: function () {\n' +
+            childNode + '\n' +
+            '},\n' +
+            'nodePosition: "' + document.getElementsByName("nodePosition")[i].options[document.getElementsByName("nodePosition")[i].selectedIndex].text.toLowerCase() + '",\n' +
+            'imageStyle: "height: ' + getHeight + '; width: ' + getWidth + ';"\n' +
+            '},';
+    }
+console.log(fullPos);
     var bcAdsOutput = 'data = {\n' +
-        'positioning: [{\n' +
-        'value: 0,\n' +
-        'pn: function () {\n' +
-        parentNode + '\n' +
-        '},\n' +
-        'cn: function () {\n' +
-        childNode + '\n' +
-        '},\n' +
-        'imageStyle: "height: ' + getHeight + '; width: ' + getWidth + ';"\n' +
-        '}],\n' +
+        'positioning: [\n' + fullPos + '],\n' +
         'settings: {\n' +
-        'cookieLifeTime: ' + document.getElementsByName("frequencyCap")[0].value + ',\n' +
+        'cookieLifeTime: ' + fCap + ',\n' +
         'infiniteCarousel: ' + document.getElementsByName("infiniteCarousel")[0].checked + ',\n' +
         'stayOnLastPartner: ' + document.getElementsByName("stayOnLastPartner")[0].checked + ',\n' +
-        'refreshDelay: ' + document.getElementsByName("refreshDelay")[0].value + ',\n' +
-        'nodePosition: "' + document.getElementsByName("nodePosition")[0].options[document.getElementsByName("nodePosition")[0].selectedIndex].text.toLowerCase() + '",\n' +
+        'refreshDelay: ' + rDel + ',\n' +
         'devices: [' + devices + '],\n' +
         '},\n' +
         'partners: [' + partners + ']}\n';

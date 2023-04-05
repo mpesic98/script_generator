@@ -81,14 +81,7 @@
 }
 
 .parentNode {
-    margin: 10px 25px;
-}
-
-.childNode {
-    margin: 10px 25px;
-    position: absolute;
-    top: 114px;
-    left: 450px;
+    margin: 0px 350px 0 25px;
 }
 
 .side {
@@ -101,6 +94,18 @@
 .generate {
     position: relative;
     top: 10px;
+}
+
+.addSize{
+    margin-left:95;
+}
+
+#pos {
+    display: flex;
+}
+
+#positioning {
+    margin:0 0 40px;
 }
 
 #behaviour {
@@ -155,7 +160,9 @@
 #lab {
     width: 150px;
 }
-
+#lap {
+    width: 100px;
+}
 
 #targetElement {
     width: 200px;
@@ -173,6 +180,12 @@
 #partners {
     position: relative;
     top: 30px;
+}
+
+#tital {
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
 }
 
 #scriptType,
@@ -198,7 +211,7 @@ input:focus {
 
 #childNode,
 #parentNode {
-    width: 440px;
+    width: 450px;
     height: 150px;
 }
 
@@ -210,6 +223,11 @@ input:hover {
     border-radius: 5px;
     box-shadow: 0 0 15px #02a768;
     border: solid #02a768 2px;
+}
+
+::placeholder {
+    color: black;
+    opacity: 0.3;
 }
 
 label {
