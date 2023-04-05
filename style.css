@@ -218,9 +218,22 @@ label {
 
 textarea {
     border-radius: 10px;
+    border: solid silver 2px;
     font-size: 14px !important;
     padding: 10px;
 }
+
+textarea:focus {
+    outline-width: 0;
+    box-shadow: 0 0 15px #02a768;
+    border: solid #02a768 2px;
+}
+
+textarea:hover {
+    box-shadow: 0 0 15px #02a768;
+    border: solid #02a768 2px;
+}
+
 
 select {
     width: 75px !important;
