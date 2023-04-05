@@ -12,6 +12,9 @@ var partners = "",
 function copyFunctionality() {
     navigator.clipboard.writeText(BCAdsFunctionality);
     document.getElementsByClassName('side')[0].innerHTML = "Functionality copied!";
+    setTimeout(() => {
+        document.getElementsByClassName('side')[0].innerHTML = "Functionality";
+    }, 5000);
 }
 
 function inputScript() {
@@ -26,7 +29,6 @@ function inputScript() {
         document.getElementsByClassName("logoImg")[i].value = partners.partners[i].logoImg;
     }
     let he = partners.positioning[0].imageStyle.split(";")
-    // document.getElementsByName("targetElement")[0].value = script.substring(script.indexOf('querySelector("') + 15, script.indexOf('")'));
     document.getElementsByName("frequencyCap")[0].value = partners.settings.cookieLifeTime;
     document.getElementsByName("refreshDelay")[0].value = partners.settings.refreshDelay;
     document.getElementsByName("width")[0].value = he[0].slice(7);
@@ -125,4 +127,7 @@ function generateScript() {
     copyText.select();
     navigator.clipboard.writeText(copyText.value);
     document.getElementsByClassName('generate')[0].innerHTML = "Script copied!"
+    setTimeout(() => {
+        document.getElementsByClassName('generate')[0].innerHTML = "Generate script!"
+    }, 5000);
 }
