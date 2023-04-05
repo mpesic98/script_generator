@@ -10,9 +10,9 @@ var partners = "",
     };
 
 function addSize() {
-    var test = document.createElement("div");
-    test.innerHTML = divPos;
-    document.getElementById("positioning").appendChild(test);
+    var adSize = document.createElement("div");
+    adSize.innerHTML = divPos;
+    document.getElementById("positioning").appendChild(adSize);
     document.getElementsByClassName("addSize")[0].remove()
     document.getElementById("tital").innerHTML = "Mobile positioning:"
 }
@@ -103,19 +103,23 @@ function generateScript() {
             }
         }
     }
+    let breakpoint = 0;
     var devices = "";
     devices = document.getElementsByName("devicesMobile")[0].checked ? '"mobile",' : "";
     devices += document.getElementsByName("devicesDesktop")[0].checked ? '"desktop"' : "";
     let rDel = document.getElementsByName("refreshDelay")[0].value === "" ? document.getElementsByName("refreshDelay")[0].placeholder : document.getElementsByName("refreshDelay")[0].value;
     let fCap = document.getElementsByName("frequencyCap")[0].value === "" ? document.getElementsByName("frequencyCap")[0].placeholder : document.getElementsByName("frequencyCap")[0].value;
-    let fullPos="";
+    let fullPos = "";
     for (let i = 0; i < document.querySelectorAll('#childNode').length; i++) {
         let getWidth = document.getElementsByName("width")[i].value === "" ? document.getElementsByName("width")[i].placeholder : document.getElementsByName("width")[i].value;
         let getHeight = document.getElementsByName("width")[i].value === "" ? document.getElementsByName("height")[i].placeholder : document.getElementsByName("height")[i].value;
         let childNode = document.getElementsByName("childNode")[i].value === "" ? document.getElementsByName("childNode")[i].placeholder : document.getElementsByName("childNode")[i].value;
-        let parentNode = document.getElementsByName("parentNode")[i].value === "" ? document.getElementsByName("parentNode")[i].placeholder : document.getElementsByName("parentNode")[i].value;    
+        let parentNode = document.getElementsByName("parentNode")[i].value === "" ? document.getElementsByName("parentNode")[i].placeholder : document.getElementsByName("parentNode")[i].value;
+        if (i === 1) {
+            breakpoint = document.getElementById('breakpoint').value === "" ? document.getElementById('breakpoint').placeholder : document.getElementById('breakpoint').value;
+        }
         fullPos += '{\n' +
-            'value: 0,\n' +
+            'value: ' + breakpoint + ',\n' +
             'pn: function () {\n' +
             parentNode + '\n' +
             '},\n' +
@@ -126,7 +130,7 @@ function generateScript() {
             'imageStyle: "height: ' + getHeight + '; width: ' + getWidth + ';"\n' +
             '},';
     }
-console.log(fullPos);
+    console.log(fullPos);
     var bcAdsOutput = 'data = {\n' +
         'positioning: [\n' + fullPos + '],\n' +
         'settings: {\n' +

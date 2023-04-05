@@ -336,7 +336,8 @@ var BCAdsFunctionality = `var showBCAds = function (operator, settings) {\n` +
     `}\n` +
     `}, 500);\n`;
 
-var divPos = `<div id="desktopPos">` +
+var divPos = ` <label for="" id="lab">Breakpoint: </label><input type="number" placeholder="1024" id="breakpoint" style="width:80px;"></input>` +
+    `<div id="desktopPos">` +
     `<label id="tital">Desktop positioning:</label>` +
     `<div id="pos">` +
     `<div for="" id="lab" class="parentNode">Parent node: <textarea placeholder="var parentNode = document.getElementsByTagName('body')[0];` +
