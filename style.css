@@ -81,7 +81,7 @@
 }
 
 .parentNode {
-    margin: 0px 350px 0 25px;
+    margin: 0 25px;
 }
 
 .side {
@@ -96,8 +96,16 @@
     top: 10px;
 }
 
-.addSize{
-    margin-left:95;
+.addSize {
+    position: relative;
+    left: 1000px;
+}
+
+#devPos {
+    border: solid silver 1px;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding-bottom: 10px;
 }
 
 #pos {
@@ -105,7 +113,7 @@
 }
 
 #positioning {
-    margin:0 0 40px;
+    margin: 0 0 40px;
 }
 
 #behaviour {
@@ -158,10 +166,7 @@
 }
 
 #lab {
-    width: 150px;
-}
-#lap {
-    width: 100px;
+    width: auto;
 }
 
 #targetElement {
@@ -231,7 +236,7 @@ input:hover {
 }
 
 label {
-    margin: 25px;
+    margin: 25px 15px 25px 25px;
 }
 
 textarea {

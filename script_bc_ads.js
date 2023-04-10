@@ -25,6 +25,10 @@ function copyFunctionality() {
     }, 5000);
 }
 
+function getPosition(string, subString, index) {
+    return string.split(subString, index).join(subString).length;
+}
+
 function inputScript() {
     var script = document.getElementById("translate").value
     var partners = eval(script)
@@ -41,11 +45,22 @@ function inputScript() {
     document.getElementsByName("refreshDelay")[0].value = partners.settings.refreshDelay;
     document.getElementsByName("width")[0].value = he[0].slice(7);
     document.getElementsByName("height")[0].value = he[1].slice(7);
-    document.getElementsByName("nodePosition")[0].value = partners.settings.nodePosition;
+    document.getElementsByName("nodePosition")[0].value = partners.positioning[0].nodePosition;
     document.getElementsByName("devicesMobile")[0].checked = partners.settings.devices.indexOf("mobile") > -1 ? true : false;
     document.getElementsByName("devicesDesktop")[0].checked = partners.settings.devices.indexOf("desktop") > -1 ? true : false;
     document.getElementsByName("stayOnLastPartner")[0].checked = partners.settings.stayOnLastPartner ? true : false;
     document.getElementsByName("infiniteCarousel")[0].checked = partners.settings.infiniteCarousel ? true : false;
+    document.getElementsByName("parentNode")[0].value = script.substring(getPosition(script, 'var parentNode', 1), getPosition(script, 'return parentNode;', 1) + 18);
+    document.getElementsByName("childNode")[0].value = script.substring(getPosition(script, 'var node', 1), getPosition(script, 'return node;', 1) + 17)
+    if (partners.positioning.length > 1) {
+        addSize();
+        document.getElementsByName("nodePosition")[1].value = partners.positioning[1].nodePosition;
+        document.getElementsByName("parentNode")[1].value = script.substring(getPosition(script, 'var parentNode', 2), getPosition(script, 'return parentNode;', 2) + 18);
+        document.getElementsByName("childNode")[1].value = script.substring(getPosition(script, 'var node', 2), getPosition(script, 'return node;', 2) + 17)
+        he = partners.positioning[1].imageStyle.split(";")
+        document.getElementsByName("width")[1].value = he[0].slice(7);
+        document.getElementsByName("height")[1].value = he[1].slice(7);
+    }
 }
 
 function removeBtn(partner) {

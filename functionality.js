@@ -336,26 +336,27 @@ var BCAdsFunctionality = `var showBCAds = function (operator, settings) {\n` +
     `}\n` +
     `}, 500);\n`;
 
-var divPos = ` <label for="" id="lab">Breakpoint: </label><input type="number" placeholder="1024" id="breakpoint" style="width:80px;"></input>` +
-    `<div id="desktopPos">` +
-    `<label id="tital">Desktop positioning:</label>` +
-    `<div id="pos">` +
-    `<div for="" id="lab" class="parentNode">Parent node: <textarea placeholder="var parentNode = document.getElementsByTagName('body')[0];` +
-    `return parentNode;" name="parentNode" id="parentNode"></textarea></div>` +
-    `<div for="" id="lab" class="childNode">Child node: <textarea placeholder="var node = document.createElement('div');` +
-    `node.style.position = 'absolute';` +
-    `node.style.top = '0';` +
-    `node.style.left = '0';` +
-    `node.style.zIndex = 999999;` +
-    `return node;" name="childNode" id="childNode"></textarea></div>` +
-    `</div>` +
-    `<label for="" id="lap" title="With px, % or use auto">Width: </label><input title="With px, % or use auto"` +
-    `type="textbox" name="width" placeholder="auto"></input>` +
-    `<label for="" id="lap" title="With px, % or use auto">Height: </label><input title="With px, % or use auto"` +
-    `type="textbox" name="height" placeholder="auto"></input>` +
-    `<label for="" id="lab" style="margin-left:125px;" title="Place ads above or below the element">Node position: </label>` +
-    `<select name="nodePosition" id="scriptType" title="Place ads above or below the element">` +
-    `<option value="below">below</option>` +
-    `<option value="above">above</option>` +
-    `</select><br>` +
-    `</div>`;
+var divPos = ` <label for="" id="lab" style="margin-bottom: 25px;">Breakpoint: </label><input type="number" placeholder="1024" id="breakpoint" style="width:80px;"></input>` +
+`<div id="devPos">`+
+`<div id="desktopPos">` +
+`<label id="tital">Desktop positioning:</label>` +
+`<div id="pos">` +
+`<div for="" id="lab" class="parentNode">Parent node: <textarea placeholder="var parentNode = document.getElementsByTagName('body')[0];\n` +
+`return parentNode;" name="parentNode" id="parentNode"></textarea></div>` +
+`<div for="" id="lab" class="childNode">Child node: <textarea placeholder="var node = document.createElement('div');\n` +
+`\tnode.style.position = 'absolute';\n` +
+`\tnode.style.top = '0';\n` +
+`\tnode.style.left = '0';\n` +
+`\tnode.style.zIndex = 999999;\n` +
+`return node;" name="childNode" id="childNode"></textarea></div>` +
+`</div>` +
+`<label for="" id="lap" title="With px, % or use auto">Width: </label><input title="With px, % or use auto"` +
+`type="textbox" name="width" placeholder="auto"></input>` +
+`<label for="" id="lap" title="With px, % or use auto">Height: </label><input title="With px, % or use auto"` +
+`type="textbox" name="height" placeholder="auto"></input>` +
+`<label for="" id="lab" style="margin-left: 300px;" title="Place ads above or below the element">Node position: </label>` +
+`<select name="nodePosition" id="scriptType" title="Place ads above or below the element">` +
+`<option value="above">above</option>` +
+`<option value="below">below</option>` +
+`</select><br>` +
+`</div></div>`;
