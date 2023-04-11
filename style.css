@@ -8,6 +8,7 @@
     border-bottom: solid silver 2px;
     border-radius: 2px;
     margin-left: 30px;
+    user-select: none;
     padding: 3px;
     cursor: pointer;
 }
@@ -29,6 +30,7 @@
     /* border: solid silver 2px; */
     border-radius: 5px;
     margin: 10px;
+    user-select: none;
     padding: 10px;
     width: 90px;
     cursor: pointer;
@@ -63,7 +65,8 @@
 }
 
 .link,
-.logoImg {
+.logoImg,
+.iframe {
     width: 300px;
 }
 
@@ -92,20 +95,33 @@
 }
 
 .generate {
-    position: relative;
-    top: 10px;
+    width: 140px;
+    height: 44px;
 }
 
 .addSize {
     position: relative;
-    left: 1000px;
+    left: 1090px;
+}
+
+.genBut {
+    display: flex;
+    margin-top: 50px;
+}
+
+.iframeNode {
+    display: none;
+}
+
+.expanded {
+    transform: rotate(180deg);
 }
 
 #devPos {
-    border: solid silver 1px;
     border-radius: 10px;
-    margin-left: 10px;
+    margin: 15px 10px 0;
     padding-bottom: 10px;
+    box-shadow: 5px 5px 10px 2px rgb(135 134 134/ 80%);
 }
 
 #pos {
@@ -119,6 +135,16 @@
 #behaviour {
     position: relative;
     bottom: 40px;
+}
+
+#addOption {
+    margin-left: 15px;
+    font-weight: bold;
+    color: #00a767;
+    cursor: pointer;
+    border: solid #00a767 2px;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 #removeBtn {
@@ -158,11 +184,17 @@
     /* border: solid red; */
 }
 
+.optionsImg {
+    width: 15px;
+    position: relative;
+    left: 2px;
+}
+
 #bcAds {
     position: relative;
     top: 65px;
     left: 200px;
-    width: 1100px;
+    width: 1200px;
 }
 
 #lab {
@@ -173,7 +205,8 @@
     width: 200px;
 }
 
-#scriptType {
+#scriptType,
+#imgType {
     width: 75px;
     height: 25px;
 }
@@ -195,6 +228,7 @@
 
 #scriptType,
 #translate,
+#imgType,
 input {
     text-align: center;
     width: 50px;

@@ -3,6 +3,7 @@ var partners = "",
     append,
     pNum,
     cNum = 0,
+    addOptions = false,
     s, e, presets = {
         brand: [],
         img: [],
@@ -15,6 +16,18 @@ function addSize() {
     document.getElementById("positioning").appendChild(adSize);
     document.getElementsByClassName("addSize")[0].remove()
     document.getElementById("tital").innerHTML = "Mobile positioning:"
+}
+
+function addOption(i) {
+    if (!addOptions) {
+        document.getElementsByClassName("optionsImg")[i - 1].classList = "optionsImg expanded"
+        document.querySelectorAll(".iframeNode")[i - 1].style.display = "block";
+        addOptions = true;
+    } else {
+        document.getElementsByClassName("optionsImg")[i - 1].classList = "optionsImg"
+        document.querySelectorAll(".iframeNode")[i - 1].style.display = "none";
+        addOptions = false;
+    }
 }
 
 function copyFunctionality() {
@@ -39,6 +52,10 @@ function inputScript() {
         document.getElementsByClassName("brand")[i].value = partners.partners[i].brand;
         document.getElementsByClassName("link")[i].value = partners.partners[i].link;
         document.getElementsByClassName("logoImg")[i].value = partners.partners[i].logoImg;
+        partners.partners[i].iframe !== undefined || partners.partners[i].noIframe || partners.partners[i].imgType === "iframe" ? document.querySelectorAll(".iframeNode")[i].style.display = "block" : false;
+        partners.partners[i].iframe !== undefined ? document.getElementsByClassName("iframe")[i].value = partners.partners[i].iframe : false;
+        partners.partners[i].noIframe ? document.getElementsByName("noIframe")[i].checked = true : false;
+        partners.partners[i].imgType === "iframe" ? document.getElementsByName("imgType")[i].value = "iframe" : false;
     }
     let he = partners.positioning[0].imageStyle.split(";")
     document.getElementsByName("frequencyCap")[0].value = partners.settings.cookieLifeTime;
@@ -53,8 +70,9 @@ function inputScript() {
     document.getElementsByName("parentNode")[0].value = script.substring(getPosition(script, 'var parentNode', 1), getPosition(script, 'return parentNode;', 1) + 18);
     document.getElementsByName("childNode")[0].value = script.substring(getPosition(script, 'var node', 1), getPosition(script, 'return node;', 1) + 17)
     if (partners.positioning.length > 1) {
-        addSize();
+        document.getElementsByName("nodePosition")[1] === undefined ? addSize() : false;
         document.getElementsByName("nodePosition")[1].value = partners.positioning[1].nodePosition;
+        document.getElementById("breakpoint").value = partners.positioning[1].value;
         document.getElementsByName("parentNode")[1].value = script.substring(getPosition(script, 'var parentNode', 2), getPosition(script, 'return parentNode;', 2) + 18);
         document.getElementsByName("childNode")[1].value = script.substring(getPosition(script, 'var node', 2), getPosition(script, 'return node;', 2) + 17)
         he = partners.positioning[1].imageStyle.split(";")
@@ -88,15 +106,22 @@ function addPartner() {
     document.getElementsByClassName("partners")[0].innerHTML += '<div class="num"><p class="stepC" style="margin: 20px;">Step ' + count + ' :</p></div>'
     for (let i = 1 + cNum; i <= pNum + cNum; i++) {
         append = '<label for=""> Brand:</label><input type="textbox" name="brand' + i + '" class="brand"></input>' +
-            '<label for="">Link:</label><input type="textbox" name="link' + i + '" class="link"></input><label for=""> Image:</label>' +
-            '<input type="textbox" name="img' + i + '" class="logoImg"></input>' +
-            '<img onclick="removeBtn(' + i + ')" class="removeBtn' + i + '" id="removeBtn" src="https://modals.igaming-service.io/wp-content/uploads/2023/03/remove.png"><br>';
+            '<label for="">Link:</label><input type="textbox" name="link' + i + '" class="link"></input>' +
+            '<label for=""> Image:</label><input type="textbox" name="img' + i + '" class="logoImg"></input>' +
+            '<span style="user-select: none;" onclick="addOption(' + i + ')" class="addOption' + i + '" id="addOption">Options<img class="optionsImg" src="https://modals.igaming-service.io/wp-content/uploads/2023/04/down-filled-triangular-arrow-removebg-preview.png"></span>' +
+            '<img onclick="removeBtn(' + i + ')" class="removeBtn' + i + '" id="removeBtn" src="https://modals.igaming-service.io/wp-content/uploads/2023/03/remove.png"><br>' +
+            '<div class="iframeNode" style="display:none;"><label for=""> Iframe:\t</label><input type="textbox" name="iframe' + i + '" class="iframe"></input></span>' +
+            '<label for="" id="lab"  title="Type of image">Image type: </label>' +
+            '<select name="imgType" id="imgType" title="Type of image">' +
+            '<option value="image">image</option>' +
+            '<option value="iframe">iframe</option></select>' +
+            '<label for="" id="lab">No iframe: </label><input type="checkbox" name="noIframe"></input>';
         document.getElementsByClassName("num").item(count - 1).innerHTML += append
     }
     cNum += pNum
     document.getElementsByClassName("partners")[0].innerHTML += '<hr style="position:absolute; width:850px;">'
     count++;
-    document.getElementsByClassName("generate")[0].style.display = "unset";
+    document.getElementsByClassName("generate")[0].style.display = "block";
     for (let i = 0; i < document.querySelectorAll(".num").length - 1; i++) {
         document.getElementsByClassName("brand")[i].value = presets.brand[i];
         document.getElementsByClassName("logoImg")[i].value = presets.img[i];
@@ -106,15 +131,28 @@ function addPartner() {
 
 function generateScript() {
     partners = "";
+    let iframes = "",
+        imgType = "",
+        noIframe = "";
     for (let i = 1; i < count; i++) {
         var inputCount = document.getElementsByClassName("num").item(i - 1).getElementsByTagName('input').length / 3;
         for (let j = 1; j <= inputCount; j++) {
             j === inputCount ? e = "\n}" : e = "";
             j === 1 ? s = "{" : s = "";
             if (j === 1) {
-                partners += s + '\n\tbrand: "' + document.getElementsByName("brand" + i)[0].value + '", \n\tlogoImg: "' + document.getElementsByName("img" + i)[0].value + '", \n\tlink: "' + document.getElementsByName("link" + i)[0].value + '"' + e + ' ,\n'
+                if (addOptions) {
+                    document.getElementsByName("iframe" + i)[0].value !== "" ? iframes = '\n\tiframe:"' + document.getElementsByName("iframe" + i)[0].value + '",' : false;
+                    document.getElementsByName("imgType")[i - 1].value !== "image" ? imgType = '\n\timgType:"' + document.getElementsByName("imgType")[i - 1].value + '",' : false;
+                    document.getElementsByName("noIframe")[i - 1].checked ? noIframe = '\n\tnoIframe:true,' : false;
+                }
+                partners += s + noIframe + imgType + '\n\tbrand: "' + document.getElementsByName("brand" + i)[0].value + '",' + iframes + '\n\tlogoImg: "' + document.getElementsByName("img" + i)[0].value + '", \n\tlink: "' + document.getElementsByName("link" + i)[0].value + '"' + e + ' ,\n},'
             } else {
-                partners += s + '\n\tbrand' + j + ': "' + document.getElementsByName("brand" + i)[0].value + '", \n\tlogoImg' + j + ': "' + document.getElementsByName("img" + i)[0].value + '", \n\tlink' + j + ': "' + document.getElementsByName("link" + i)[0].value + '"' + e + ' ,\n'
+                if (addOptions) {
+                    document.getElementsByName("iframe" + i)[0].value !== "" ? iframes = '\n\tiframe' + j + ':"' + document.getElementsByName("iframe" + i)[0].value + '",' : false;
+                    document.getElementsByName("imgType")[i - 1].value !== "image" ? imgType = '\n\timgType:"' + document.getElementsByName("imgType")[i-1].value + '",' : false;
+                    document.getElementsByName("noIframe")[i - 1].checked ? noIframe = '\n\tnoIframe:true,' : false;
+                }
+                partners += s + noIframe + imgType + '\n\tbrand' + j + ': "' + document.getElementsByName("brand" + i)[0].value + '",' + iframes + ' \n\tlogoImg' + j + ': "' + document.getElementsByName("img" + i)[0].value + '", \n\tlink' + j + ': "' + document.getElementsByName("link" + i)[0].value + '"' + e + ' ,\n}'
             }
         }
     }
@@ -145,7 +183,6 @@ function generateScript() {
             'imageStyle: "height: ' + getHeight + '; width: ' + getWidth + ';"\n' +
             '},';
     }
-    console.log(fullPos);
     var bcAdsOutput = 'data = {\n' +
         'positioning: [\n' + fullPos + '],\n' +
         'settings: {\n' +

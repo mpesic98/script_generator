@@ -48,30 +48,32 @@
             name="devicesDesktop"></input>&nbsp;&nbsp;&nbsp;&nbsp;Mobile &nbsp;&nbsp;&nbsp;<input type="checkbox"
             name="devicesMobile"></input><br>
         <label for="" id="lab">Infinite carousel: </label><input type="checkbox" name="infiniteCarousel"></input>
-        <label for="" id="lab">Stay on last partner: </label><input type="checkbox" name="stayOnLastPartner"></input><br>
+        <label for="" id="lab">Stay on last partner: </label><input type="checkbox"
+            name="stayOnLastPartner"></input><br>
         <div id="positioning">
             <div id="devPos">
-        <label id="tital">Positioning:</label>
-            <div id="pos">
-                <div for="" id="lab" class="parentNode">Parent node: <textarea placeholder="var parentNode = document.getElementsByTagName('body')[0];
+                <label id="tital">Positioning:</label>
+                <div id="pos">
+                    <div for="" id="lab" class="parentNode">Parent node: <textarea placeholder="var parentNode = document.getElementsByTagName('body')[0];
 return parentNode;" name="parentNode" id="parentNode"></textarea></div>
-                <div for="" id="lab" class="childNode">Child node: <textarea placeholder="var node = document.createElement('div');
+                    <div for="" id="lab" class="childNode">Child node: <textarea placeholder="var node = document.createElement('div');
         node.style.position = 'absolute';
         node.style.top = '0';
         node.style.left = '0';
         node.style.zIndex = 999999;
 return node;" name="childNode" id="childNode"></textarea></div>
+                </div>
+                <label for="" id="lab" title="With px, % or use auto">Width: </label><input
+                    title="With px, % or use auto" type="textbox" name="width" placeholder="auto"></input>
+                <label for="" id="lab" title="With px, % or use auto">Height: </label><input
+                    title="With px, % or use auto" type="textbox" name="height" placeholder="auto"></input>
+                <label for="" id="lab" style="margin-left: 300px;" title="Place ads above or below the element">Node
+                    position: </label>
+                <select name="nodePosition" id="scriptType" title="Place ads above or below the element">
+                    <option value="above">above</option>
+                    <option value="below">below</option>
+                </select>
             </div>
-            <label for="" id="lab" title="With px, % or use auto">Width: </label><input title="With px, % or use auto"
-                type="textbox" name="width" placeholder="auto"></input>
-            <label for="" id="lab" title="With px, % or use auto">Height: </label><input title="With px, % or use auto"
-                type="textbox" name="height" placeholder="auto"></input>
-            <label for="" id="lab" style="margin-left: 300px;" title="Place ads above or below the element">Node
-                position: </label>
-            <select name="nodePosition" id="scriptType" title="Place ads above or below the element">
-                <option value="above">above</option>
-                <option value="below">below</option>
-            </select></div>
             <label onclick="addSize()" class="button_app addSize" id="addP">Add size</label>
         </div>
         <hr id="splitSettings">
@@ -79,10 +81,11 @@ return node;" name="childNode" id="childNode"></textarea></div>
         <div class="partners">
         </div>
         <br>
-        <div onClick="generateScript()" class="generate button_app" style="display: none;">Generate
-            script!</div><br><br>
-        <textarea name="output" style="width: 500px; height: 500px; display: none;"></textarea>
-        <div type="submit" onclick="inputScript()" class="button_app">Translate</div><br>
+        <div class="genBut">
+            <div onClick="generateScript()" class="generate button_app" style="display: none;">Generate
+                script</div>
+            <div type="submit" onclick="inputScript()" class="button_app generate">Translate script</div>
+        </div><textarea name="output" style="display: none;"></textarea>
         <textarea name="input" id="translate" cols="30" rows="10" placeholder="Input script or generate script"
             style="width: 910px; height: 600px; margin: 5px;"></textarea>
     </div>
