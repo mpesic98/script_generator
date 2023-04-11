@@ -190,6 +190,11 @@
     /* border: solid red; */
 }
 
+#posText {
+    position: relative;
+    bottom: 130px;
+}
+
 #bcAds {
     position: relative;
     top: 65px;
@@ -224,6 +229,7 @@
     font-size: 20px;
     font-weight: bold;
     font-style: italic;
+    text-decoration-line: underline;
 }
 
 #scriptType,

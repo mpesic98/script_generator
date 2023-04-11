@@ -341,9 +341,9 @@ var divPos = ` <label for="" id="lab" style="margin-bottom: 25px;">Breakpoint: <
 `<div id="desktopPos">` +
 `<label id="tital">Desktop positioning:</label>` +
 `<div id="pos">` +
-`<div for="" id="lab" class="parentNode">Parent node: <textarea placeholder="var parentNode = document.getElementsByTagName('body')[0];\n` +
+`<div for="" id="lab" class="parentNode"><span id="posText">Parent node: </span><textarea placeholder="var parentNode = document.getElementsByTagName('body')[0];\n` +
 `return parentNode;" name="parentNode" id="parentNode"></textarea></div>` +
-`<div for="" id="lab" class="childNode">Child node: <textarea placeholder="var node = document.createElement('div');\n` +
+`<div for="" id="lab" class="childNode"><span id="posText">Child node: </span><textarea placeholder="var node = document.createElement('div');\n` +
 `\tnode.style.position = 'absolute';\n` +
 `\tnode.style.top = '0';\n` +
 `\tnode.style.left = '0';\n` +
