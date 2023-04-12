@@ -35,7 +35,6 @@
 
 .button_app:hover {
     box-shadow: 5px 5px 10px 2px rgb(135 134 134/ 80%);
-    /* border: solid #02a768 2px; */
 }
 
 .navbar {
@@ -247,7 +246,7 @@ input:focus {
     height: 35px;
     border-radius: 5px;
     box-shadow: 5px 5px 10px 2px rgb(135 134 134/ 80%);
-    border: solid #02a768 2px;
+    
 }
 
 #childNode,
@@ -263,7 +262,7 @@ input:hover {
     height: 35px;
     border-radius: 5px;
     box-shadow: 5px 5px 10px 2px rgb(135 134 134/ 80%);
-    border: solid #02a768 2px;
+    
 }
 
 label {
@@ -280,12 +279,12 @@ textarea {
 textarea:focus {
     outline-width: 0;
     box-shadow: 5px 5px 10px 2px rgb(135 134 134/ 80%);
-    border: solid #02a768 2px;
+    
 }
 
 textarea:hover {
     box-shadow: 5px 5px 10px 2px rgb(135 134 134/ 80%);
-    border: solid #02a768 2px;
+    
 }
 
 
